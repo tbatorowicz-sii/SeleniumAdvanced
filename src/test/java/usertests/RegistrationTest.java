@@ -19,12 +19,12 @@ public class RegistrationTest extends TestBase {
 
     @Test
     public void shouldRegisterUser() {
-        header.enterSignIn();
-        logInPage.enterCreateAccount();
+        header.enterSignInPage();
+        logInPage.enterCreateAccountPage();
         User user = UserFactory.getRandomUser();
         registrationPage.registerRandomUser(user);
-        header.enterMyAccount();
-        yourAccountPage.enterPersonalInformation();
+        header.enterMyAccountPage();
+        yourAccountPage.enterPersonalInformationPage();
         yourPersonalInformationPage.isDataDisplayedCorrectly(user);
         header.signOut();
         logInPage.logIn(user);

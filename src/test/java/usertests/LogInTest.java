@@ -18,7 +18,7 @@ public class LogInTest extends TestBase {
 
     @Test
     public void shouldLogInUser() {
-        header.enterSignIn();
+        header.enterSignInPage();
         User user = UserFactory.getAlreadyRegisteredUser();
         logInPage.logIn(user);
         Assert.assertEquals(header.getMyAccountName(), user.getFirstName() + " " + user.getLastName());

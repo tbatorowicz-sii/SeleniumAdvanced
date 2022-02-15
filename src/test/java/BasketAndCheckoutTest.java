@@ -34,7 +34,7 @@ public class BasketAndCheckoutTest extends TestBase {
             productDetailsPage.closePopup();
             header.returnToMainPage();
         });
-        header.enterBasket();
+        header.enterBasketPage();
         basketPage.isBasketDisplayingCorrectDetails(productDetailsPage.getBasket());
     }
 }

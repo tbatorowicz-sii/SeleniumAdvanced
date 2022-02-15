@@ -45,7 +45,7 @@ public class LogInPage extends BasePage {
         getSubmitLoginBtn().click();
     }
 
-    public void enterCreateAccount() {
+    public void enterCreateAccountPage() {
         getCreateAccountLinkText().click();
     }
 }

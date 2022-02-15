@@ -53,11 +53,11 @@ public class HeaderPageObject extends BasePage {
         getSignOutBtn().click();
     }
 
-    public void enterMyAccount() {
+    public void enterMyAccountPage() {
         getMyAccoutnBtn().click();
     }
 
-    public void enterBasket() {
+    public void enterBasketPage() {
         getBasket().click();
     }
 
@@ -65,7 +65,7 @@ public class HeaderPageObject extends BasePage {
         return getMyAccoutnBtn().getText();
     }
 
-    public void enterSignIn() {
+    public void enterSignInPage() {
         getSignInBtn().click();
     }
 }

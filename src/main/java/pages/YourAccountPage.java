@@ -17,7 +17,7 @@ public class YourAccountPage extends BasePage {
         return personalInformationBtn;
     }
 
-    public void enterPersonalInformation() {
+    public void enterPersonalInformationPage() {
         getPersonalInformationBtn().click();
     }
 }
