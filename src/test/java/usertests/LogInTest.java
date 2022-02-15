@@ -11,7 +11,7 @@ import utils.UserFactory;
 
 public class LogInTest extends TestBase {
     @BeforeMethod
-    public void getToMainPage() {
+    public void initPages() {
         logInPage = new LogInPage(driver);
         header = new HeaderPageObject(driver);
     }

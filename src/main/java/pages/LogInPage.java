@@ -20,23 +20,32 @@ public class LogInPage extends BasePage {
     @FindBy(css = "#submit-login")
     private WebElement submitLoginBtn;
 
-    @FindBy(css = ".page-footer")
-    private WebElement signOutLinkText;
-
     @FindBy(css = ".no-account > a")
     private WebElement createAccountLinkText;
 
-    public WebElement getSignOutLinkText() {
-        return signOutLinkText;
+    public WebElement getEmailInput() {
+        return emailInput;
+    }
+
+    public WebElement getPasswordInput() {
+        return passwordInput;
+    }
+
+    public WebElement getSubmitLoginBtn() {
+        return submitLoginBtn;
+    }
+
+    public WebElement getCreateAccountLinkText() {
+        return createAccountLinkText;
     }
 
     public void logIn(User user) {
-        emailInput.sendKeys(user.getEmail());
-        passwordInput.sendKeys(user.getPassword());
-        submitLoginBtn.click();
+        getEmailInput().sendKeys(user.getEmail());
+        getPasswordInput().sendKeys(user.getPassword());
+        getSubmitLoginBtn().click();
     }
 
     public void enterCreateAccount() {
-        createAccountLinkText.click();
+        getCreateAccountLinkText().click();
     }
 }

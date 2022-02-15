@@ -19,19 +19,53 @@ public class HeaderPageObject extends BasePage {
     @FindBy(css = ".account")
     private WebElement myAccoutnBtn;
 
-    public void enterSignIn() {
-        signInBtn.click();
+    @FindBy(css = ".logo")
+    private WebElement logo;
+
+    @FindBy(css = ".header i")
+    private WebElement basket;
+
+    public WebElement getBasket() {
+        return basket;
+    }
+
+    public WebElement getLogo() {
+        return logo;
+    }
+
+    public WebElement getSignInBtn() {
+        return signInBtn;
+    }
+
+    public WebElement getSignOutBtn() {
+        return signOutBtn;
+    }
+
+    public WebElement getMyAccoutnBtn() {
+        return myAccoutnBtn;
+    }
+
+    public void returnToMainPage(){
+        getLogo().click();
     }
 
     public void signOut() {
-        signOutBtn.click();
+        getSignOutBtn().click();
     }
 
     public void enterMyAccount() {
-        myAccoutnBtn.click();
+        getMyAccoutnBtn().click();
+    }
+
+    public void enterBasket(){
+        getBasket().click();
     }
 
     public String getMyAccountName() {
-        return myAccoutnBtn.getText();
+        return getMyAccoutnBtn().getText();
+    }
+
+    public void enterSignIn() {
+        getSignInBtn().click();
     }
 }

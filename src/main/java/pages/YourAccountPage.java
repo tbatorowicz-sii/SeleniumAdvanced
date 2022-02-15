@@ -13,7 +13,11 @@ public class YourAccountPage extends BasePage {
     @FindBy(css = "#identity-link")
     private WebElement personalInformationBtn;
 
+    public WebElement getPersonalInformationBtn() {
+        return personalInformationBtn;
+    }
+
     public void enterPersonalInformation() {
-        personalInformationBtn.click();
+        getPersonalInformationBtn().click();
     }
 }

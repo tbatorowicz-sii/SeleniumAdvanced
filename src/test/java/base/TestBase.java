@@ -1,5 +1,6 @@
 package base;
 
+import models.Basket;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -19,6 +20,11 @@ public class TestBase {
     protected RegistrationPage registrationPage;
     protected YourAccountPage yourAccountPage;
     protected YourPersonalInformationPage yourPersonalInformationPage;
+    protected MainPage mainPage;
+    protected ProductDetailsPage productDetailsPage;
+    protected BasketPage basketPage;
+
+
 
     @BeforeMethod
     public void setUp() throws IOException {
@@ -29,6 +35,6 @@ public class TestBase {
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+        //driver.quit();
     }
 }
