@@ -45,7 +45,7 @@ public class HeaderPageObject extends BasePage {
         return myAccoutnBtn;
     }
 
-    public void returnToMainPage(){
+    public void returnToMainPage() {
         getLogo().click();
     }
 
@@ -57,7 +57,7 @@ public class HeaderPageObject extends BasePage {
         getMyAccoutnBtn().click();
     }
 
-    public void enterBasket(){
+    public void enterBasket() {
         getBasket().click();
     }
 

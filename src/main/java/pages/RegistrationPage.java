@@ -96,7 +96,7 @@ public class RegistrationPage extends BasePage {
     }
 
     public void submit() {
-        submitBtn.click();
+        getSubmitBtn().click();
     }
 
     public void registerRandomUser(User user) {

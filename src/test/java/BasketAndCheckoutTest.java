@@ -19,7 +19,7 @@ public class BasketAndCheckoutTest extends TestBase {
     }
 
     @Test
-    public void shouldAddProductsToBasket() {
+    public void shouldCorrectlyDisplayProductsInBasket() {
         mainPage.enterRandomPopularProduct();
         productDetailsPage.setRandomQuantity();
         productDetailsPage.addProductToBasket();
@@ -35,10 +35,6 @@ public class BasketAndCheckoutTest extends TestBase {
             header.returnToMainPage();
         });
         header.enterBasket();
-        System.out.println(basketPage.returnProductsName(0));
-        System.out.println(basketPage.returnProductsPrice(0));
-        System.out.println(basketPage.returnProductsQuantity(0));
-        System.out.println(basketPage.returnProductsTotalPrice(0));
-        System.out.println(basketPage.returnTotalOrderPrice());
+        basketPage.isBasketDisplayingCorrectDetails(productDetailsPage.getBasket());
     }
 }

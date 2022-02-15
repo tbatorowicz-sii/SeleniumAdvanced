@@ -1,6 +1,5 @@
 package base;
 
-import models.Basket;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -24,8 +23,6 @@ public class TestBase {
     protected ProductDetailsPage productDetailsPage;
     protected BasketPage basketPage;
 
-
-
     @BeforeMethod
     public void setUp() throws IOException {
         configBrowser = new JsonJackson().deserializeJson("src\\property", ConfigBrowser.class);
@@ -35,6 +32,6 @@ public class TestBase {
 
     @AfterMethod
     public void tearDown() {
-        //driver.quit();
+        driver.quit();
     }
 }

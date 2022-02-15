@@ -1,6 +1,9 @@
 package models;
 
+import org.apache.commons.math3.util.Precision;
+
 public class Product {
+
     private String name;
     private float price;
     private int quantity;
@@ -40,9 +43,9 @@ public class Product {
 
     public Product(String name, float price, int quantity) {
         this.name = name;
-        this.price = price;
+        this.price = Precision.round(price, 2);
         this.quantity = quantity;
-        totalPrice = price * quantity;
+        totalPrice = Precision.round(price * quantity, 2);
     }
 
     @Override

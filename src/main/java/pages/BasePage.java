@@ -10,7 +10,7 @@ import java.util.Random;
 
 public abstract class BasePage {
     protected Random rand;
-    protected Basket basket;
+    public Basket basket;
     protected WebDriverWait wait;
 
     public BasePage(WebDriver driver) {

@@ -12,22 +12,12 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 public class DriverFactory {
 
     public WebDriver getDriver(Browser browser) {
-        WebDriver driver = null;
-        switch (browser) {
-            case CHROME:
-                driver = getChromeDriver();
-                break;
-            case FIREFOX:
-                driver = getFirefoxDriver();
-                break;
-            case IE:
-                driver = getIEDriver();
-                break;
-            case EDGE:
-                driver = getEdgeDriver();
-                break;
-        }
-        return driver;
+        return switch (browser) {
+            case CHROME -> getChromeDriver();
+            case FIREFOX -> getFirefoxDriver();
+            case IE -> getIEDriver();
+            case EDGE -> getEdgeDriver();
+        };
     }
 
     private WebDriver getChromeDriver() {

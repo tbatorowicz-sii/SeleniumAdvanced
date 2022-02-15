@@ -1,6 +1,8 @@
 package pages;
 
+import models.Basket;
 import models.Product;
+import org.apache.commons.math3.util.Precision;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,7 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 
-public class ProductDetailsPage extends BasePage{
+public class ProductDetailsPage extends BasePage {
 
     public ProductDetailsPage(WebDriver driver) {
         super(driver);
@@ -64,7 +66,7 @@ public class ProductDetailsPage extends BasePage{
         return closePopupBtn;
     }
 
-    public void closePopup(){
+    public void closePopup() {
         getClosePopupBtn().click();
         wait.until(ExpectedConditions.invisibilityOf(getClosePopupBtn()));
     }
@@ -74,40 +76,43 @@ public class ProductDetailsPage extends BasePage{
         return getPopupProductName().getText();
     }
 
-    public String returnProductAmountInfo(){
+    public String returnProductAmountInfo() {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("p.cart-products-count")));
+        wait.until(ExpectedConditions.textToBePresentInElement(getProductAmountInfo(), "There"));
         return getProductAmountInfo().getText();
     }
 
-    public float returnProductPrice(){
-        return Float.parseFloat(getProductPrice().getAttribute("content"));
+    public float returnProductPrice() {
+        return Precision.round(Float.parseFloat(getProductPrice().getAttribute("content")), 2);
     }
 
-    public String returnProductName(){
+    public String returnProductName() {
         return getProductName().getText();
     }
 
-    public int returnProductQuantity(){
+    public int returnProductQuantity() {
         return Integer.parseInt(getQuantity().getAttribute("value"));
     }
 
-    public void setRandomQuantity(){
+    public void setRandomQuantity() {
         getQuantity().clear();
-        getQuantity().sendKeys(String.valueOf(rand.nextInt(1,6)));
+        getQuantity().sendKeys(String.valueOf(rand.nextInt(1, 6)));
     }
 
-    public void addProductToBasket(){
-        basket.addProduct(new Product(returnProductName(),returnProductPrice(),returnProductQuantity()));
+    public void addProductToBasket() {
+        basket.addProduct(new Product(returnProductName(), returnProductPrice(), returnProductQuantity()));
         getAddProductBtn().click();
-        //System.out.println(basket.toString());
-        //basket.showBasket();
     }
 
-    public void isPopupTextDisplayedCorrect(){
-        if(basket.getTotalQuantity()==1){
-            Assert.assertEquals(returnProductAmountInfo(), "There is " + basket.getTotalQuantity() + " items in your cart.");
-        } else{
+    public void isPopupTextDisplayedCorrect() {
+        if (basket.getTotalQuantity() == 1) {
+            Assert.assertEquals(returnProductAmountInfo(), "There is " + basket.getTotalQuantity() + " item in your cart.");
+        } else {
             Assert.assertEquals(returnProductAmountInfo(), "There are " + basket.getTotalQuantity() + " items in your cart.");
         }
+    }
+
+    public Basket getBasket() {
+        return basket;
     }
 }

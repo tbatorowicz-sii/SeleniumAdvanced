@@ -1,5 +1,7 @@
 package models;
 
+import org.apache.commons.math3.util.Precision;
+
 import java.util.ArrayList;
 
 public class Basket {
@@ -37,34 +39,29 @@ public class Basket {
         this.totalQuantity = totalQuantity;
     }
 
-    public Basket(ArrayList<Product> basket) {
-        this.basket = basket;
-        basketTotalPrice = 0;
-    }
-
 
     public void addProduct(Product product) {
         boolean alreadyInBasket = false;
-        for (Product p : basket) {
+        for (Product p : getBasket()) {
             if (p.getName().equals(product.getName())) {
                 alreadyInBasket = true;
                 p.setQuantity(p.getQuantity() + product.getQuantity());
-                p.setTotalPrice(p.getQuantity()*p.getPrice());
+                p.setTotalPrice(p.getQuantity() * p.getPrice());
+                p.setTotalPrice(Precision.round(p.getTotalPrice(), 2));
+                setTotalQuantity(getTotalQuantity() + product.getQuantity());
+                setBasketTotalPrice(getBasketTotalPrice() + product.getTotalPrice());
+                setBasketTotalPrice(Precision.round(getBasketTotalPrice(), 2));
                 break;
             }
         }
         if (!alreadyInBasket) {
-            basket.add(product);
+            getBasket().add(product);
+            setTotalQuantity(getTotalQuantity() + product.getQuantity());
+            setBasketTotalPrice(getBasketTotalPrice() + product.getTotalPrice());
+            setBasketTotalPrice(Precision.round(getBasketTotalPrice(), 2));
         }
-        totalQuantity += product.getQuantity();
-        basketTotalPrice += product.getTotalPrice();
     }
 
-    public void showBasket() {
-        for (Product p : basket) {
-            System.out.println(p.toString());
-        }
-    }
 
     @Override
     public String toString() {

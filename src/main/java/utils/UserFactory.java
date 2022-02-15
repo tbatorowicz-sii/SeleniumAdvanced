@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 public class UserFactory {
     public static User getRandomUser() {
         Faker faker = new Faker();
-        User user = new User.UserBuilder()
+        return new User.UserBuilder()
                 .withSocialTitle(faker.bool().bool() ? "Mr" : "Mrs")
                 .withFirstName(faker.name().firstName())
                 .withLastName(faker.name().lastName())
@@ -21,11 +21,10 @@ public class UserFactory {
                 .withNewsletter(faker.bool().bool())
                 .withUserAgreement(true)
                 .build();
-        return user;
     }
 
     public static User getAlreadyRegisteredUser() {
-        User user = new User.UserBuilder()
+        return new User.UserBuilder()
                 .withSocialTitle("Mr")
                 .withFirstName("Janusz")
                 .withLastName("Tytanowy")
@@ -37,6 +36,5 @@ public class UserFactory {
                 .withNewsletter(true)
                 .withUserAgreement(true)
                 .build();
-        return user;
     }
 }
