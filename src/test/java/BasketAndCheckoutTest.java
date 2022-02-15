@@ -20,13 +20,7 @@ public class BasketAndCheckoutTest extends TestBase {
 
     @Test
     public void shouldCorrectlyDisplayProductsInBasket() {
-        mainPage.enterRandomPopularProduct();
-        productDetailsPage.setRandomQuantity();
-        productDetailsPage.addProductToBasket();
-        productDetailsPage.isPopupTextDisplayedCorrect();
-        productDetailsPage.closePopup();
-        header.returnToMainPage();
-        IntStream.range(0, 5).forEach(i -> {
+        IntStream.range(0, 6).forEach(i -> {
             mainPage.enterRandomPopularProduct();
             productDetailsPage.setRandomQuantity();
             productDetailsPage.addProductToBasket();
