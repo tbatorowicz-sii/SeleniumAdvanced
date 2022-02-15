@@ -71,11 +71,6 @@ public class ProductDetailsPage extends BasePage {
         wait.until(ExpectedConditions.invisibilityOf(getClosePopupBtn()));
     }
 
-    public String returnPopupProductName() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h6.h6")));
-        return getPopupProductName().getText();
-    }
-
     public String returnProductAmountInfo() {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("p.cart-products-count")));
         wait.until(ExpectedConditions.textToBePresentInElement(getProductAmountInfo(), "There"));
