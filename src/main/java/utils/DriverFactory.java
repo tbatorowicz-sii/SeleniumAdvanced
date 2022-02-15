@@ -5,9 +5,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 
 public class DriverFactory {
 
@@ -30,21 +30,24 @@ public class DriverFactory {
         return driver;
     }
 
-    private WebDriver getChromeDriver(){
+    private WebDriver getChromeDriver() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         return new ChromeDriver(options);
     }
-    private WebDriver getFirefoxDriver(){
+
+    private WebDriver getFirefoxDriver() {
         WebDriverManager.firefoxdriver().setup();
         return new FirefoxDriver();
     }
-    private WebDriver getIEDriver(){
+
+    private WebDriver getIEDriver() {
         WebDriverManager.iedriver().setup();
         return new InternetExplorerDriver();
     }
-    private WebDriver getEdgeDriver(){
+
+    private WebDriver getEdgeDriver() {
         WebDriverManager.edgedriver().setup();
         return new EdgeDriver();
     }

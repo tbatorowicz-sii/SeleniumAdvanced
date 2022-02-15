@@ -1,10 +1,11 @@
 package base;
 
-import utils.DriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import pages.*;
 import utils.ConfigBrowser;
+import utils.DriverFactory;
 import utils.JsonJackson;
 
 import java.io.IOException;
@@ -13,11 +14,17 @@ public class TestBase {
     protected WebDriver driver;
     protected ConfigBrowser configBrowser;
 
+    protected HeaderPageObject header;
+    protected LogInPage logInPage;
+    protected RegistrationPage registrationPage;
+    protected YourAccountPage yourAccountPage;
+    protected YourPersonalInformationPage yourPersonalInformationPage;
+
     @BeforeMethod
     public void setUp() throws IOException {
         configBrowser = new JsonJackson().deserializeJson("src\\property", ConfigBrowser.class);
         driver = new DriverFactory().getDriver(configBrowser.getBrowser());
-        driver.get("http://146.59.32.4/");
+        driver.get(configBrowser.getMainURL());
     }
 
     @AfterMethod
