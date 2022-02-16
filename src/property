@@ -1,5 +1,4 @@
 {
   "browser": "CHROME",
-  "mainURL": "http://146.59.32.4/",
-  "logInPageURL": "http://146.59.32.4/index.php?controller=authentication&back=my-account"
+  "mainURL": "http://146.59.32.4/"
 }

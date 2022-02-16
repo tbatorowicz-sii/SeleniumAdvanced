@@ -1,27 +1,30 @@
-package usertests;
+package user;
 
 import base.TestBase;
-import models.User;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.*;
+import pages.common.Header;
+import pages.user.LogInPage;
+import pages.user.RegistrationPage;
+import pages.user.YourAccountPage;
+import pages.user.YourPersonalInformationPage;
 import utils.UserFactory;
 
 public class RegistrationTest extends TestBase {
     @BeforeMethod
-    public void initPages() {
+    public void initialize() {
         logInPage = new LogInPage(driver);
-        header = new HeaderPageObject(driver);
+        header = new Header(driver);
         registrationPage = new RegistrationPage(driver);
         yourAccountPage = new YourAccountPage(driver);
         yourPersonalInformationPage = new YourPersonalInformationPage(driver);
+        user = UserFactory.getRandomUser();
     }
 
     @Test
     public void shouldRegisterUser() {
         header.enterSignInPage();
         logInPage.enterCreateAccountPage();
-        User user = UserFactory.getRandomUser();
         registrationPage.registerRandomUser(user);
         header.enterMyAccountPage();
         yourAccountPage.enterPersonalInformationPage();

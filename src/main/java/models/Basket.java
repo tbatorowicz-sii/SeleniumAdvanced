@@ -5,30 +5,13 @@ import org.apache.commons.math3.util.Precision;
 import java.util.ArrayList;
 
 public class Basket {
-    private ArrayList<Product> basket;
-    private float basketTotalPrice;
+    private final ArrayList<Product> basket;
     private int totalQuantity;
+    private float basketTotalPrice;
 
-    public Basket() {
-        basket = new ArrayList<>();
-        basketTotalPrice = 0;
-        totalQuantity = 0;
-    }
 
     public ArrayList<Product> getBasket() {
         return basket;
-    }
-
-    public void setBasket(ArrayList<Product> basket) {
-        this.basket = basket;
-    }
-
-    public float getBasketTotalPrice() {
-        return basketTotalPrice;
-    }
-
-    public void setBasketTotalPrice(float basketTotalPrice) {
-        this.basketTotalPrice = basketTotalPrice;
     }
 
     public int getTotalQuantity() {
@@ -39,35 +22,39 @@ public class Basket {
         this.totalQuantity = totalQuantity;
     }
 
+    public float getBasketTotalPrice() {
+        return basketTotalPrice;
+    }
+
+    public void setBasketTotalPrice(float basketTotalPrice) {
+        this.basketTotalPrice = Precision.round(basketTotalPrice, 2);
+    }
+
+
+    public Basket() {
+        basket = new ArrayList<>();
+        totalQuantity = 0;
+        basketTotalPrice = 0;
+    }
+
 
     public void addProduct(Product product) {
         boolean alreadyInBasket = false;
-        for (Product p : getBasket()) {
+        for (Product p : this.basket) {
             if (p.getName().equals(product.getName())) {
                 alreadyInBasket = true;
                 p.setQuantity(p.getQuantity() + product.getQuantity());
                 p.setTotalPrice(p.getQuantity() * p.getPrice());
-                p.setTotalPrice(Precision.round(p.getTotalPrice(), 2));
                 setTotalQuantity(getTotalQuantity() + product.getQuantity());
                 setBasketTotalPrice(getBasketTotalPrice() + product.getTotalPrice());
-                setBasketTotalPrice(Precision.round(getBasketTotalPrice(), 2));
                 break;
             }
         }
         if (!alreadyInBasket) {
-            getBasket().add(product);
+            this.basket.add(product);
             setTotalQuantity(getTotalQuantity() + product.getQuantity());
             setBasketTotalPrice(getBasketTotalPrice() + product.getTotalPrice());
-            setBasketTotalPrice(Precision.round(getBasketTotalPrice(), 2));
         }
     }
 
-
-    @Override
-    public String toString() {
-        return "Basket{" +
-               "basket=" + basket +
-               ", basketTotalPrice=" + basketTotalPrice +
-               '}';
-    }
 }

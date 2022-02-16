@@ -5,7 +5,6 @@ import enums.Browser;
 public class ConfigBrowser {
     private Browser browser;
     private String mainURL;
-    private String logInPageURL;
 
     public Browser getBrowser() {
         return browser;
@@ -15,7 +14,4 @@ public class ConfigBrowser {
         return mainURL;
     }
 
-    public String getLogInPageURL() {
-        return logInPageURL;
-    }
 }

@@ -1,4 +1,4 @@
-package pages;
+package pages.basket;
 
 
 import models.Basket;
@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.asserts.SoftAssert;
+import pages.base.BasePage;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -31,44 +32,25 @@ public class BasketPage extends BasePage {
     @FindBy(css = "div#cart-subtotal-products span.value")
     private WebElement totalOrderPrice;
 
-    public List<WebElement> getProductsName() {
-        return productsName;
-    }
-
-    public List<WebElement> getProductsPrice() {
-        return productsPrice;
-    }
-
-    public List<WebElement> getProductsQuantity() {
-        return productsQuantity;
-    }
-
-    public List<WebElement> getProductsTotalPrice() {
-        return productsTotalPrice;
-    }
-
-    public WebElement getTotalOrderPrice() {
-        return totalOrderPrice;
-    }
 
     public String returnProductsName(int index) {
-        return getProductsName().get(index).getText();
+        return this.productsName.get(index).getText();
     }
 
     public Float returnProductsPrice(int index) {
-        return Float.valueOf(getProductsPrice().get(index).getText().substring(1));
+        return Float.valueOf(this.productsPrice.get(index).getText().substring(1));
     }
 
     public int returnProductsQuantity(int index) {
-        return Integer.parseInt(getProductsQuantity().get(index).getAttribute("value"));
+        return Integer.parseInt(this.productsQuantity.get(index).getAttribute("value"));
     }
 
     public Float returnProductsTotalPrice(int index) {
-        return Float.valueOf(getProductsTotalPrice().get(index).getText().substring(1));
+        return Float.valueOf(this.productsTotalPrice.get(index).getText().substring(1));
     }
 
     public Float returnTotalOrderPrice() {
-        return Float.valueOf(getTotalOrderPrice().getText().substring(1).replace(",", ""));
+        return Float.valueOf(this.totalOrderPrice.getText().substring(1).replace(",", ""));
     }
 
 

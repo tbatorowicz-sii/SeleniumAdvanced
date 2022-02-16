@@ -2,16 +2,16 @@ package models;
 
 public class User {
 
-    private String socialTitle;
-    private String firstName;
-    private String lastName;
-    private String email;
+    private final String socialTitle;
+    private final String firstName;
+    private final String lastName;
+    private final String email;
     private String password;
-    private String birthDate;
+    private final String birthDate;
     private Boolean receiveOffers;
-    private Boolean customerData;
+    private final Boolean customerData;
     private Boolean newsletter;
-    private Boolean userAgreement;
+    private final Boolean userAgreement;
 
     public String getSocialTitle() {
         return socialTitle;

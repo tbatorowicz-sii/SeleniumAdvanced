@@ -1,4 +1,4 @@
-package pages;
+package pages.base;
 
 import models.Basket;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +10,7 @@ import java.util.Random;
 
 public abstract class BasePage {
     protected Random rand;
-    public Basket basket;
+    protected Basket basket;
     protected WebDriverWait wait;
 
     public BasePage(WebDriver driver) {

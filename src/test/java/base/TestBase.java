@@ -1,9 +1,17 @@
 package base;
 
+import models.User;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.*;
+import pages.basket.BasketPage;
+import pages.basket.ProductDetailsPage;
+import pages.common.Header;
+import pages.common.MainPage;
+import pages.user.LogInPage;
+import pages.user.RegistrationPage;
+import pages.user.YourAccountPage;
+import pages.user.YourPersonalInformationPage;
 import utils.ConfigBrowser;
 import utils.DriverFactory;
 import utils.JsonJackson;
@@ -14,7 +22,7 @@ public class TestBase {
     protected WebDriver driver;
     protected ConfigBrowser configBrowser;
 
-    protected HeaderPageObject header;
+    protected Header header;
     protected LogInPage logInPage;
     protected RegistrationPage registrationPage;
     protected YourAccountPage yourAccountPage;
@@ -22,6 +30,8 @@ public class TestBase {
     protected MainPage mainPage;
     protected ProductDetailsPage productDetailsPage;
     protected BasketPage basketPage;
+
+    protected User user;
 
     @BeforeMethod
     public void setUp() throws IOException {

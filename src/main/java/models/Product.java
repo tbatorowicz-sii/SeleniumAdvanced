@@ -4,8 +4,8 @@ import org.apache.commons.math3.util.Precision;
 
 public class Product {
 
-    private String name;
-    private float price;
+    private final String name;
+    private final float price;
     private int quantity;
     private float totalPrice;
 
@@ -13,16 +13,8 @@ public class Product {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public float getPrice() {
         return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
     }
 
     public int getQuantity() {
@@ -38,7 +30,7 @@ public class Product {
     }
 
     public void setTotalPrice(float totalPrice) {
-        this.totalPrice = totalPrice;
+        this.totalPrice = Precision.round(totalPrice, 2);
     }
 
     public Product(String name, float price, int quantity) {
@@ -48,13 +40,4 @@ public class Product {
         totalPrice = Precision.round(price * quantity, 2);
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-               "name='" + name + '\'' +
-               ", price=" + price +
-               ", quantity=" + quantity +
-               ", totalPrice=" + totalPrice +
-               '}';
-    }
 }
