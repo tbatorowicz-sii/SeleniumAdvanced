@@ -22,11 +22,11 @@ public class ProductAndCategoriesTest extends TestBase {
         IntStream.range(0, header.returnCategorySize()).forEach(i -> {
             header.enterCategory(i);
             softAssert.assertEquals(header.returnCategoryName(i), categoryPage.returnCategoryName());
-            categoryPage.isLabelDisplaysCorrectAmount(softAssert);
+            categoryPage.isLabelDisplayingCorrectAmount(softAssert);
             IntStream.range(0, header.getSubcategoryCurrent().size()).forEach(j -> {
                 header.enterSubcategoryAndDisplayMenu(i, j, categoryPage.returnCategoryName());
                 softAssert.assertEquals(header.getCategoryCurrent().getText(), categoryPage.returnCategoryName());
-                categoryPage.isLabelDisplaysCorrectAmount(softAssert);
+                categoryPage.isLabelDisplayingCorrectAmount(softAssert);
             });
         });
         softAssert.assertAll();
