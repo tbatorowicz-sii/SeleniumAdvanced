@@ -18,10 +18,6 @@ public class Basket {
         return totalQuantity;
     }
 
-    public void setTotalQuantity(int totalQuantity) {
-        this.totalQuantity = totalQuantity;
-    }
-
     public float getBasketTotalPrice() {
         return basketTotalPrice;
     }
@@ -45,16 +41,12 @@ public class Basket {
                 alreadyInBasket = true;
                 p.setQuantity(p.getQuantity() + product.getQuantity());
                 p.setTotalPrice(p.getQuantity() * p.getPrice());
-                setTotalQuantity(getTotalQuantity() + product.getQuantity());
-                setBasketTotalPrice(getBasketTotalPrice() + product.getTotalPrice());
                 break;
             }
         }
-        if (!alreadyInBasket) {
-            this.basket.add(product);
-            setTotalQuantity(getTotalQuantity() + product.getQuantity());
-            setBasketTotalPrice(getBasketTotalPrice() + product.getTotalPrice());
-        }
+        if (!alreadyInBasket) this.basket.add(product);
+        this.totalQuantity += product.getQuantity();
+        setBasketTotalPrice(getBasketTotalPrice() + product.getTotalPrice());
     }
 
 }
