@@ -20,7 +20,7 @@ public class LogInTest extends TestBase {
     public void shouldLogInUser() {
         header.enterSignInPage();
         logInPage.logIn(user);
-        Assert.assertEquals(header.getMyAccountName(), user.getFirstName() + " " + user.getLastName());
+        header.assertIfLoggedIn(user);
         header.signOut();
     }
 }

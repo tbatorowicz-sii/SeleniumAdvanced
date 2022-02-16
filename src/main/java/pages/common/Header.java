@@ -1,9 +1,11 @@
 package pages.common;
 
+import models.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import pages.base.BasePage;
 
 import java.util.List;
@@ -91,6 +93,10 @@ public class Header extends BasePage {
 
     public void signOut() {
         this.signOutBtn.click();
+    }
+
+    public void assertIfLoggedIn(User user){
+        Assert.assertEquals(getMyAccountName(), user.getFirstName() + " " + user.getLastName());
     }
 
 }
