@@ -1,6 +1,7 @@
 package basket;
 
 import base.TestBase;
+import models.Basket;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.basket.BasketPage;
@@ -24,11 +25,10 @@ public class BasketAndCheckoutTest extends TestBase {
     public void shouldCorrectlyDisplayProductsInBasket() {
         IntStream.range(0, 6).forEach(i -> {
             mainPage.enterRandomPopularProduct();
-            productDetailsPage.setRandomQuantityAndAddProductToBasket();
-            productDetailsPage.assertIfPopupTextDisplayedCorrect();
+            productDetailsPage.addProductToBasket();
             header.returnToMainPage();
         });
         header.enterBasketPage();
-        basketPage.isBasketDisplayingCorrectDetails(productDetailsPage.getBasket());
+        basketPage.isBasketDisplayingCorrectDetails(new Basket(),productDetailsPage.getBasket());
     }
 }

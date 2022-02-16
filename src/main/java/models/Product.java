@@ -40,4 +40,11 @@ public class Product {
         totalPrice = Precision.round(price * quantity, 2);
     }
 
+    public Product(String name, float price, int quantity, float totalPrice) {
+        this.name = name;
+        this.price = Precision.round(price, 2);
+        this.quantity = quantity;
+        this.totalPrice = Precision.round(totalPrice, 2);
+    }
+
 }

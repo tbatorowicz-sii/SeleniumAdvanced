@@ -1,15 +1,17 @@
 package pages.basket;
 
-
 import models.Basket;
+import models.Product;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.asserts.SoftAssert;
+import org.testng.Assert;
 import pages.base.BasePage;
 
 import java.util.List;
 import java.util.stream.IntStream;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class BasketPage extends BasePage {
 
@@ -46,7 +48,7 @@ public class BasketPage extends BasePage {
     }
 
     public Float returnProductsTotalPrice(int index) {
-        return Float.valueOf(this.productsTotalPrice.get(index).getText().substring(1));
+        return Float.valueOf(this.productsTotalPrice.get(index).getText().substring(1).replace(",", ""));
     }
 
     public Float returnTotalOrderPrice() {
@@ -54,15 +56,11 @@ public class BasketPage extends BasePage {
     }
 
 
-    public void isBasketDisplayingCorrectDetails(Basket basket) {
-        SoftAssert softAssert = new SoftAssert();
-        IntStream.range(0, basket.getBasket().size() - 1).forEach(i -> {
-            softAssert.assertEquals(basket.getBasket().get(i).getName(), returnProductsName(i));
-            softAssert.assertEquals(basket.getBasket().get(i).getPrice(), returnProductsPrice(i));
-            softAssert.assertEquals(basket.getBasket().get(i).getQuantity(), returnProductsQuantity(i));
-            softAssert.assertEquals(basket.getBasket().get(i).getTotalPrice(), returnProductsTotalPrice(i));
+    public void isBasketDisplayingCorrectDetails(Basket expected, Basket actual) {
+        IntStream.range(0, actual.getBasket().size()).forEach(i -> {
+            expected.addProduct(new Product(returnProductsName(i), returnProductsPrice(i), returnProductsQuantity(i), returnProductsTotalPrice(i)));
         });
-        softAssert.assertEquals(basket.getBasketTotalPrice(), returnTotalOrderPrice());
-        softAssert.assertAll();
+        assertThat(actual).usingRecursiveComparison().isEqualTo(expected);
+        Assert.assertEquals(actual.getBasketTotalPrice(), returnTotalOrderPrice());
     }
 }

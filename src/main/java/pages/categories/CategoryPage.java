@@ -23,7 +23,8 @@ public class CategoryPage extends BasePage {
     @FindBy(css = ".total-products > p")
     private WebElement amountInfoLabel;
 
-    public void isLabelDisplayingCorrectAmount(SoftAssert softAssert) {
+    public void assertions(SoftAssert softAssert, String nameOfWhatWasClicked) {
+        softAssert.assertEquals(nameOfWhatWasClicked, returnCategoryName());
         softAssert.assertEquals(this.amountInfoLabel.getText(), this.categoryProducts.size() == 1
                 ? "There is " + this.categoryProducts.size() + " product." : "There are " + this.categoryProducts.size() + " products.");
     }

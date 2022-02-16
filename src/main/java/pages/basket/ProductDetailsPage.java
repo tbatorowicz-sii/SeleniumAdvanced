@@ -3,7 +3,6 @@ package pages.basket;
 import models.Basket;
 import models.Product;
 import org.apache.commons.math3.util.Precision;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -45,15 +44,11 @@ public class ProductDetailsPage extends BasePage {
         return Integer.parseInt(this.quantity.getAttribute("value"));
     }
 
-    public void setRandomQuantityAndAddProductToBasket() {
+    public void addProductToBasket() {
         this.quantity.clear();
         this.quantity.sendKeys(String.valueOf(rand.nextInt(1, 6)));
         basket.addProduct(new Product(this.productName.getText(), returnProductPrice(), returnProductQuantity()));
         this.addProductBtn.click();
-    }
-
-    public void assertIfPopupTextDisplayedCorrect() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("p.cart-products-count")));
         wait.until(ExpectedConditions.textToBePresentInElement(this.productAmountInfo, "There"));
         Assert.assertEquals(this.productAmountInfo.getText(), basket.getTotalQuantity() == 1
                 ? "There is " + basket.getTotalQuantity() + " item in your cart." : "There are " + basket.getTotalQuantity() + " items in your cart.");

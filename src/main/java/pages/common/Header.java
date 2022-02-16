@@ -61,7 +61,7 @@ public class Header extends BasePage {
         this.categories.get(index).click();
     }
 
-    public void enterSubcategoryAndDisplayMenu(int i, int j, String categoryName) {
+    public void enterSubcategory(int i, int j, String categoryName) {
         if (!categoryName.equals(returnCategoryName(i))) enterCategory(i);
         actions.moveToElement(this.categories.get(i)).perform();
         wait.until(ExpectedConditions.elementToBeClickable(this.subcategoryCurrent.get(j)));
@@ -95,7 +95,7 @@ public class Header extends BasePage {
         this.signOutBtn.click();
     }
 
-    public void assertIfLoggedIn(User user){
+    public void assertIfLoggedIn(User user) {
         Assert.assertEquals(getMyAccountName(), user.getFirstName() + " " + user.getLastName());
     }
 
