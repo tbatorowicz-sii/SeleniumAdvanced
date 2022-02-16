@@ -55,10 +55,8 @@ public class ProductDetailsPage extends BasePage {
     public void assertIfPopupTextDisplayedCorrect() {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("p.cart-products-count")));
         wait.until(ExpectedConditions.textToBePresentInElement(this.productAmountInfo, "There"));
-        if (basket.getTotalQuantity() == 1)
-            Assert.assertEquals(this.productAmountInfo.getText(), "There is " + basket.getTotalQuantity() + " item in your cart.");
-        else
-            Assert.assertEquals(this.productAmountInfo.getText(), "There are " + basket.getTotalQuantity() + " items in your cart.");
+        Assert.assertEquals(this.productAmountInfo.getText(), basket.getTotalQuantity() == 1
+                ? "There is " + basket.getTotalQuantity() + " item in your cart." : "There are " + basket.getTotalQuantity() + " items in your cart.");
         this.closePopupBtn.click();
         wait.until(ExpectedConditions.invisibilityOf(this.closePopupBtn));
     }

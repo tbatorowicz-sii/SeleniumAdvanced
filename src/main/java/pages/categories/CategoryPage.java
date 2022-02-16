@@ -24,11 +24,8 @@ public class CategoryPage extends BasePage {
     private WebElement amountInfoLabel;
 
     public void isLabelDisplaysCorrectAmount(SoftAssert softAssert) {
-        if (this.categoryProducts.size() == 1)
-            softAssert.assertEquals(this.amountInfoLabel.getText(), "There is " + this.categoryProducts.size() + " product.");
-        else
-            softAssert.assertEquals(this.amountInfoLabel.getText(), "There are " + this.categoryProducts.size() + " products.");
-        System.out.println(this.amountInfoLabel.getText() + " " + this.categoryProducts.size());
+        softAssert.assertEquals(this.amountInfoLabel.getText(), this.categoryProducts.size() == 1
+                ? "There is " + this.categoryProducts.size() + " product." : "There are " + this.categoryProducts.size() + " products.");
     }
 
     public String returnCategoryName() {
