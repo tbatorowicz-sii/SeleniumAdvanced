@@ -14,7 +14,7 @@ public class YourAccountPage extends BasePage {
     @FindBy(css = "#identity-link")
     private WebElement personalInformationBtn;
 
-    public void enterPersonalInformationPage() {
+    public void enterYourPersonalInformationPage() {
         personalInformationBtn.click();
     }
 }

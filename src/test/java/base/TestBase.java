@@ -2,8 +2,6 @@ package base;
 
 import models.User;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
@@ -12,8 +10,8 @@ import pages.basket.ProductDetailsPage;
 import pages.categories.CategoryPage;
 import pages.common.Header;
 import pages.common.MainPage;
-import pages.user.LogInPage;
-import pages.user.RegistrationPage;
+import pages.user.SignInPage;
+import pages.user.SignUpPage;
 import pages.user.YourAccountPage;
 import pages.user.YourPersonalInformationPage;
 import utils.ConfigBrowser;
@@ -27,8 +25,8 @@ public class TestBase {
     protected ConfigBrowser configBrowser;
 
     protected Header header;
-    protected LogInPage logInPage;
-    protected RegistrationPage registrationPage;
+    protected SignInPage signInPage;
+    protected SignUpPage signUpPage;
     protected YourAccountPage yourAccountPage;
     protected YourPersonalInformationPage yourPersonalInformationPage;
     protected MainPage mainPage;
@@ -49,6 +47,6 @@ public class TestBase {
 
     @AfterMethod
     public void tearDown() {
-        //driver.quit();
+        driver.quit();
     }
 }

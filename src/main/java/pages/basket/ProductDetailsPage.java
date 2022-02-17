@@ -7,8 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import pages.base.BasePage;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
 public class ProductDetailsPage extends BasePage {
@@ -50,7 +51,7 @@ public class ProductDetailsPage extends BasePage {
         basket.addProduct(new Product(productName.getText(), returnProductPrice(), returnProductQuantity()));
         addProductBtn.click();
         wait.until(ExpectedConditions.textToBePresentInElement(productAmountInfo, "There"));
-        Assert.assertEquals(productAmountInfo.getText(), basket.getTotalQuantity() == 1
+        assertThat(productAmountInfo.getText()).isEqualTo(basket.getTotalQuantity() == 1
                 ? "There is " + basket.getTotalQuantity() + " item in your cart." : "There are " + basket.getTotalQuantity() + " items in your cart.");
         closePopupBtn.click();
         wait.until(ExpectedConditions.invisibilityOf(closePopupBtn));

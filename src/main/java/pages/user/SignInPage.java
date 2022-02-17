@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base.BasePage;
 
-public class LogInPage extends BasePage {
+public class SignInPage extends BasePage {
 
-    public LogInPage(WebDriver driver) {
+    public SignInPage(WebDriver driver) {
         super(driver);
     }
 
@@ -25,11 +25,11 @@ public class LogInPage extends BasePage {
     private WebElement submitLoginBtn;
 
 
-    public void enterCreateAccountPage() {
+    public void enterSignUpPage() {
         createAccountLinkText.click();
     }
 
-    public void logIn(User user) {
+    public void signIn(User user) {
         emailInput.sendKeys(user.getEmail());
         passwordInput.sendKeys(user.getPassword());
         submitLoginBtn.click();

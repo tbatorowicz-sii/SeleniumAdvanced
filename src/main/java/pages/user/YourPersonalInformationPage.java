@@ -4,8 +4,9 @@ import models.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.asserts.SoftAssert;
 import pages.base.BasePage;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class YourPersonalInformationPage extends BasePage {
 
@@ -13,8 +14,8 @@ public class YourPersonalInformationPage extends BasePage {
         super(driver);
     }
 
-    @FindBy(xpath = "//input[@name='id_gender' and @value='1']")
-    private WebElement socialTitleMr;
+    @FindBy(xpath = "//input[@checked='']/ancestor::label")
+    private WebElement socialTitle;
 
     @FindBy(xpath = "//input[@name='firstname']")
     private WebElement firstNameInput;
@@ -35,16 +36,20 @@ public class YourPersonalInformationPage extends BasePage {
     private WebElement newsletterCheckBox;
 
 
-    public void isDataDisplayedCorrectly(User user) {
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(socialTitleMr.getAttribute("checked") != null, user.getSocialTitle().equals("Mr"));
-        softAssert.assertEquals(firstNameInput.getAttribute("value"), user.getFirstName());
-        softAssert.assertEquals(lastNameInput.getAttribute("value"), user.getLastName());
-        softAssert.assertEquals(emailInput.getAttribute("value"), user.getEmail());
-        softAssert.assertEquals(birthdayInput.getAttribute("value"), user.getBirthDate());
-        softAssert.assertEquals(receiveOffersCheckBox.getAttribute("checked") != null, user.getReceiveOffers().equals(true));
-        softAssert.assertEquals(newsletterCheckBox.getAttribute("checked") != null, user.getNewsletter().equals(true));
-        softAssert.assertAll();
+    public void dataAssertion(User expectedUser) {
+        assertThat(new User.UserBuilder()
+                .withSocialTitle(socialTitle.getText().replace(".", ""))
+                .withFirstName(firstNameInput.getAttribute("value"))
+                .withLastName(lastNameInput.getAttribute("value"))
+                .withEmail(emailInput.getAttribute("value"))
+                .withPassword(expectedUser.getPassword())
+                .withBirthDate(birthdayInput.getAttribute("value"))
+                .withReceiveOffers(receiveOffersCheckBox.getAttribute("checked") != null)
+                .withCustomerData(true)
+                .withNewsletter(newsletterCheckBox.getAttribute("checked") != null)
+                .withUserAgreement(true)
+                .build())
+                .usingRecursiveComparison().isEqualTo(expectedUser);
     }
 
 }

@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base.BasePage;
 
-public class RegistrationPage extends BasePage {
+public class SignUpPage extends BasePage {
 
-    public RegistrationPage(WebDriver driver) {
+    public SignUpPage(WebDriver driver) {
         super(driver);
     }
 
@@ -49,7 +49,7 @@ public class RegistrationPage extends BasePage {
     private WebElement submitBtn;
 
 
-    public void registerRandomUser(User user) {
+    public void registerUser(User user) {
         if (user.getSocialTitle().equals("Mr")) socialTitleMr.click();
         else socialTitleMrs.click();
         firstNameInput.sendKeys(user.getFirstName());

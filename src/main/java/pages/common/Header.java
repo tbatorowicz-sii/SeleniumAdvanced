@@ -4,10 +4,11 @@ import models.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
 import pages.base.BasePage;
 
 import java.util.List;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Header extends BasePage {
 
@@ -56,7 +57,7 @@ public class Header extends BasePage {
     }
 
     public void enterSubcategory(int i, int j) {
-        if (j!=0) enterCategory(i);
+        if (j != 0) enterCategory(i);
         actions.moveToElement(categories.get(i)).perform();
         currentSubcategories.get(j).click();
         actions.moveToElement(categories.get(i)).perform();
@@ -66,7 +67,7 @@ public class Header extends BasePage {
         basket.click();
     }
 
-    public void enterMyAccountPage() {
+    public void enterYourAccountPage() {
         myAccountBtn.click();
     }
 
@@ -87,7 +88,7 @@ public class Header extends BasePage {
     }
 
     public void assertIfLoggedIn(User user) {
-        Assert.assertEquals(getMyAccountName(), user.getFirstName() + " " + user.getLastName());
+        assertThat(getMyAccountName()).isEqualTo(user.getFirstName() + " " + user.getLastName());
     }
 
 }

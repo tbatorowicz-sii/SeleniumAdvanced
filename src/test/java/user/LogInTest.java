@@ -1,17 +1,16 @@
 package user;
 
 import base.TestBase;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.common.Header;
-import pages.user.LogInPage;
+import pages.user.SignInPage;
 import utils.UserFactory;
 
 public class LogInTest extends TestBase {
     @BeforeMethod
     public void initialize() {
-        logInPage = new LogInPage(driver);
+        signInPage = new SignInPage(driver);
         header = new Header(driver);
         user = UserFactory.getAlreadyRegisteredUser();
     }
@@ -19,7 +18,7 @@ public class LogInTest extends TestBase {
     @Test
     public void shouldLogInUser() {
         header.enterSignInPage();
-        logInPage.logIn(user);
+        signInPage.signIn(user);
         header.assertIfLoggedIn(user);
         header.signOut();
     }
