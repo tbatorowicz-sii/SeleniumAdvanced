@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SeleniumAdvanced.iml" filepath="$PROJECT_DIR$/SeleniumAdvanced.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SeleniumBasics.iml" filepath="$PROJECT_DIR$/SeleniumBasics.iml" />
     </modules>
   </component>
 </project>

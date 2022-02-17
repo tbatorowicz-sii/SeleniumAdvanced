@@ -47,7 +47,7 @@ public class ProductDetailsPage extends BasePage {
 
     public void addProductToBasket() {
         quantity.clear();
-        quantity.sendKeys(String.valueOf(rand.nextInt(1, 6)));
+        quantity.sendKeys(String.valueOf(5));
         basket.addProduct(new Product(productName.getText(), returnProductPrice(), returnProductQuantity()));
         addProductBtn.click();
         wait.until(ExpectedConditions.textToBePresentInElement(productAmountInfo, "There"));
