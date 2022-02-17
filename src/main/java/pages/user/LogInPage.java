@@ -26,13 +26,13 @@ public class LogInPage extends BasePage {
 
 
     public void enterCreateAccountPage() {
-        this.createAccountLinkText.click();
+        createAccountLinkText.click();
     }
 
     public void logIn(User user) {
-        this.emailInput.sendKeys(user.getEmail());
-        this.passwordInput.sendKeys(user.getPassword());
-        this.submitLoginBtn.click();
+        emailInput.sendKeys(user.getEmail());
+        passwordInput.sendKeys(user.getPassword());
+        submitLoginBtn.click();
     }
 
 }

@@ -19,12 +19,12 @@ public class ProductAndCategoriesTest extends TestBase {
 
     @Test
     public void shouldIterateThroughCategories() {
-        IntStream.range(0, header.returnCategorySize()).forEach(i -> {
+        IntStream.range(0, header.getCategoriesSize()).forEach(i -> {
             header.enterCategory(i);
-            categoryPage.assertions(softAssert, header.returnCategoryName(i));
-            IntStream.range(0, header.getSubcategoryCurrent().size()).forEach(j -> {
-                header.enterSubcategory(i, j, categoryPage.returnCategoryName());
-                categoryPage.assertions(softAssert, header.getCategoryCurrent().getText());
+            categoryPage.assertions(softAssert, header.getCurrentCategoryName());
+            IntStream.range(0, header.getCurrentSubcategoriesSize()).forEach(j -> {
+                header.enterSubcategory(i, j);
+                categoryPage.assertions(softAssert, header.getCurrentCategoryName());
             });
         });
         softAssert.assertAll();

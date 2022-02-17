@@ -4,7 +4,6 @@ import models.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import pages.base.BasePage;
 
@@ -35,64 +34,56 @@ public class Header extends BasePage {
     private List<WebElement> categories;
 
     @FindBy(xpath = "//*[contains(@class, 'category current ')]")
-    private WebElement categoryCurrent;
+    private WebElement currentCategory;
 
     @FindBy(xpath = "//*[contains(@class, 'category current ')]//li[@class='category']")
-    private List<WebElement> subcategoryCurrent;
+    private List<WebElement> currentSubcategories;
 
-
-    public List<WebElement> getSubcategoryCurrent() {
-        return subcategoryCurrent;
+    public int getCategoriesSize() {
+        return categories.size();
     }
 
-    public WebElement getCategoryCurrent() {
-        return categoryCurrent;
+    public int getCurrentSubcategoriesSize() {
+        return currentSubcategories.size();
     }
 
-    public String returnCategoryName(int index) {
-        return this.categories.get(index).getText();
+    public String getCurrentCategoryName() {
+        return currentCategory.getText();
     }
 
-    public int returnCategorySize() {
-        return this.categories.size();
+    public void enterCategory(int i) {
+        categories.get(i).click();
     }
 
-    public void enterCategory(int index) {
-        this.categories.get(index).click();
+    public void enterSubcategory(int i, int j) {
+        if (j!=0) enterCategory(i);
+        actions.moveToElement(categories.get(i)).perform();
+        currentSubcategories.get(j).click();
+        actions.moveToElement(categories.get(i)).perform();
     }
-
-    public void enterSubcategory(int i, int j, String categoryName) {
-        if (!categoryName.equals(returnCategoryName(i))) enterCategory(i);
-        actions.moveToElement(this.categories.get(i)).perform();
-        wait.until(ExpectedConditions.elementToBeClickable(this.subcategoryCurrent.get(j)));
-        this.subcategoryCurrent.get(j).click();
-        actions.moveToElement(this.categories.get(i)).perform();
-        wait.until(ExpectedConditions.elementToBeClickable(getCategoryCurrent()));
-    }
-
 
     public void enterBasketPage() {
-        this.basket.click();
+        basket.click();
     }
 
     public void enterMyAccountPage() {
-        this.myAccountBtn.click();
+        myAccountBtn.click();
     }
 
     public void enterSignInPage() {
-        this.signInBtn.click();
+        signInBtn.click();
     }
 
     public String getMyAccountName() {
-        return this.myAccountBtn.getText();
+        return myAccountBtn.getText();
     }
 
     public void returnToMainPage() {
-        this.logo.click();
+        logo.click();
     }
 
     public void signOut() {
-        this.signOutBtn.click();
+        signOutBtn.click();
     }
 
     public void assertIfLoggedIn(User user) {

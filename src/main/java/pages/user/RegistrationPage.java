@@ -50,17 +50,17 @@ public class RegistrationPage extends BasePage {
 
 
     public void registerRandomUser(User user) {
-        if (user.getSocialTitle().equals("Mr")) this.socialTitleMr.click();
-        else this.socialTitleMrs.click();
-        this.firstNameInput.sendKeys(user.getFirstName());
-        this.lastNameInput.sendKeys(user.getLastName());
-        this.emailInput.sendKeys(user.getEmail());
-        this.passwordInput.sendKeys(user.getPassword());
-        this.birthdayInput.sendKeys(user.getBirthDate());
-        if (user.getReceiveOffers()) this.receiveOffersCheckBox.click();
-        if (user.getCustomerData()) this.customerPrivacyCheckBox.click();
-        if (user.getNewsletter()) this.newsletterCheckBox.click();
-        if (user.getUserAgreement()) this.userAgreementCheckBox.click();
-        this.submitBtn.click();
+        if (user.getSocialTitle().equals("Mr")) socialTitleMr.click();
+        else socialTitleMrs.click();
+        firstNameInput.sendKeys(user.getFirstName());
+        lastNameInput.sendKeys(user.getLastName());
+        emailInput.sendKeys(user.getEmail());
+        passwordInput.sendKeys(user.getPassword());
+        birthdayInput.sendKeys(user.getBirthDate());
+        if (user.getReceiveOffers()) receiveOffersCheckBox.click();
+        if (user.getCustomerData()) customerPrivacyCheckBox.click();
+        if (user.getNewsletter()) newsletterCheckBox.click();
+        if (user.getUserAgreement()) userAgreementCheckBox.click();
+        submitBtn.click();
     }
 }

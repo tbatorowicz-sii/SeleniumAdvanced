@@ -37,23 +37,23 @@ public class ProductDetailsPage extends BasePage {
 
 
     public float returnProductPrice() {
-        return Precision.round(Float.parseFloat(this.productPrice.getAttribute("content")), 2);
+        return Precision.round(Float.parseFloat(productPrice.getAttribute("content")), 2);
     }
 
     public int returnProductQuantity() {
-        return Integer.parseInt(this.quantity.getAttribute("value"));
+        return Integer.parseInt(quantity.getAttribute("value"));
     }
 
     public void addProductToBasket() {
-        this.quantity.clear();
-        this.quantity.sendKeys(String.valueOf(rand.nextInt(1, 6)));
-        basket.addProduct(new Product(this.productName.getText(), returnProductPrice(), returnProductQuantity()));
-        this.addProductBtn.click();
-        wait.until(ExpectedConditions.textToBePresentInElement(this.productAmountInfo, "There"));
-        Assert.assertEquals(this.productAmountInfo.getText(), basket.getTotalQuantity() == 1
+        quantity.clear();
+        quantity.sendKeys(String.valueOf(rand.nextInt(1, 6)));
+        basket.addProduct(new Product(productName.getText(), returnProductPrice(), returnProductQuantity()));
+        addProductBtn.click();
+        wait.until(ExpectedConditions.textToBePresentInElement(productAmountInfo, "There"));
+        Assert.assertEquals(productAmountInfo.getText(), basket.getTotalQuantity() == 1
                 ? "There is " + basket.getTotalQuantity() + " item in your cart." : "There are " + basket.getTotalQuantity() + " items in your cart.");
-        this.closePopupBtn.click();
-        wait.until(ExpectedConditions.invisibilityOf(this.closePopupBtn));
+        closePopupBtn.click();
+        wait.until(ExpectedConditions.invisibilityOf(closePopupBtn));
     }
 
     public Basket getBasket() {

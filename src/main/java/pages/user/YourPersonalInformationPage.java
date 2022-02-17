@@ -37,13 +37,13 @@ public class YourPersonalInformationPage extends BasePage {
 
     public void isDataDisplayedCorrectly(User user) {
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(this.socialTitleMr.getAttribute("checked") != null, user.getSocialTitle().equals("Mr"));
-        softAssert.assertEquals(this.firstNameInput.getAttribute("value"), user.getFirstName());
-        softAssert.assertEquals(this.lastNameInput.getAttribute("value"), user.getLastName());
-        softAssert.assertEquals(this.emailInput.getAttribute("value"), user.getEmail());
-        softAssert.assertEquals(this.birthdayInput.getAttribute("value"), user.getBirthDate());
-        softAssert.assertEquals(this.receiveOffersCheckBox.getAttribute("checked") != null, user.getReceiveOffers().equals(true));
-        softAssert.assertEquals(this.newsletterCheckBox.getAttribute("checked") != null, user.getNewsletter().equals(true));
+        softAssert.assertEquals(socialTitleMr.getAttribute("checked") != null, user.getSocialTitle().equals("Mr"));
+        softAssert.assertEquals(firstNameInput.getAttribute("value"), user.getFirstName());
+        softAssert.assertEquals(lastNameInput.getAttribute("value"), user.getLastName());
+        softAssert.assertEquals(emailInput.getAttribute("value"), user.getEmail());
+        softAssert.assertEquals(birthdayInput.getAttribute("value"), user.getBirthDate());
+        softAssert.assertEquals(receiveOffersCheckBox.getAttribute("checked") != null, user.getReceiveOffers().equals(true));
+        softAssert.assertEquals(newsletterCheckBox.getAttribute("checked") != null, user.getNewsletter().equals(true));
         softAssert.assertAll();
     }
 

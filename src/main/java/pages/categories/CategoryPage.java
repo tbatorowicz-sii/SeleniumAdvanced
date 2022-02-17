@@ -24,12 +24,8 @@ public class CategoryPage extends BasePage {
     private WebElement amountInfoLabel;
 
     public void assertions(SoftAssert softAssert, String nameOfWhatWasClicked) {
-        softAssert.assertEquals(nameOfWhatWasClicked, returnCategoryName());
-        softAssert.assertEquals(this.amountInfoLabel.getText(), this.categoryProducts.size() == 1
-                ? "There is " + this.categoryProducts.size() + " product." : "There are " + this.categoryProducts.size() + " products.");
-    }
-
-    public String returnCategoryName() {
-        return this.categoryName.getText();
+        softAssert.assertEquals(nameOfWhatWasClicked, categoryName.getText());
+        softAssert.assertEquals(amountInfoLabel.getText(), categoryProducts.size() == 1
+                ? "There is " + categoryProducts.size() + " product." : "There are " + categoryProducts.size() + " products.");
     }
 }

@@ -15,6 +15,6 @@ public class YourAccountPage extends BasePage {
     private WebElement personalInformationBtn;
 
     public void enterPersonalInformationPage() {
-        this.personalInformationBtn.click();
+        personalInformationBtn.click();
     }
 }

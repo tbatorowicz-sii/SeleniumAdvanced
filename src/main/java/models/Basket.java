@@ -36,7 +36,7 @@ public class Basket {
 
     public void addProduct(Product product) {
         boolean alreadyInBasket = false;
-        for (Product p : this.basket) {
+        for (Product p : basket) {
             if (p.getName().equals(product.getName())) {
                 alreadyInBasket = true;
                 p.setQuantity(p.getQuantity() + product.getQuantity());
@@ -44,8 +44,8 @@ public class Basket {
                 break;
             }
         }
-        if (!alreadyInBasket) this.basket.add(product);
-        this.totalQuantity += product.getQuantity();
+        if (!alreadyInBasket) basket.add(product);
+        totalQuantity += product.getQuantity();
         setBasketTotalPrice(getBasketTotalPrice() + product.getTotalPrice());
     }
 

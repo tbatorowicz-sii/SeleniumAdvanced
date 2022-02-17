@@ -36,23 +36,23 @@ public class BasketPage extends BasePage {
 
 
     public String returnProductsName(int index) {
-        return this.productsName.get(index).getText();
+        return productsName.get(index).getText();
     }
 
     public Float returnProductsPrice(int index) {
-        return Float.valueOf(this.productsPrice.get(index).getText().substring(1));
+        return Float.valueOf(productsPrice.get(index).getText().substring(1));
     }
 
     public int returnProductsQuantity(int index) {
-        return Integer.parseInt(this.productsQuantity.get(index).getAttribute("value"));
+        return Integer.parseInt(productsQuantity.get(index).getAttribute("value"));
     }
 
     public Float returnProductsTotalPrice(int index) {
-        return Float.valueOf(this.productsTotalPrice.get(index).getText().substring(1).replace(",", ""));
+        return Float.valueOf(productsTotalPrice.get(index).getText().substring(1).replace(",", ""));
     }
 
     public Float returnTotalOrderPrice() {
-        return Float.valueOf(this.totalOrderPrice.getText().substring(1).replace(",", ""));
+        return Float.valueOf(totalOrderPrice.getText().substring(1).replace(",", ""));
     }
 
 

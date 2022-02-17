@@ -17,7 +17,7 @@ public class MainPage extends BasePage {
     private List<WebElement> popularProducts;
 
     public void enterRandomPopularProduct() {
-        this.popularProducts.get(rand.nextInt(this.popularProducts.size())).click();
+        popularProducts.get(rand.nextInt(popularProducts.size())).click();
     }
 
 }
