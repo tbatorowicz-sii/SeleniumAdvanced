@@ -60,6 +60,6 @@ public class BasketPage extends BasePage {
         IntStream.range(0, actual.getBasket().size()).forEach(i -> expected
                 .addProduct(new Product(returnProductsName(i), returnProductsPrice(i), returnProductsQuantity(i), returnProductsTotalPrice(i))));
         assertThat(actual).usingRecursiveComparison().isEqualTo(expected);
-        Assert.assertEquals(actual.getBasketTotalPrice(), returnTotalOrderPrice());
+        assertThat(actual.getBasketTotalPrice()).isEqualTo(returnTotalOrderPrice());
     }
 }
