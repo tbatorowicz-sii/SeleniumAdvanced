@@ -12,18 +12,13 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 public class DriverFactory {
 
     public WebDriver getDriver(Browser browser) {
-        switch (browser) {
-            case CHROME:
-                return getChromeDriver();
-            case FIREFOX:
-                return getFirefoxDriver();
-            case IE:
-                return getIEDriver();
-            case EDGE:
-                return getEdgeDriver();
-            default:
-                throw new IllegalArgumentException();
-        }
+        return switch (browser) {
+            case CHROME -> getChromeDriver();
+            case FIREFOX -> getFirefoxDriver();
+            case IE -> getIEDriver();
+            case EDGE -> getEdgeDriver();
+            default -> throw new IllegalArgumentException();
+        };
     }
 
     private WebDriver getChromeDriver() {
