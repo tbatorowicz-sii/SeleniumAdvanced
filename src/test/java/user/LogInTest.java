@@ -21,7 +21,5 @@ public class LogInTest extends TestBase {
         signInPage.signIn(user);
         header.assertIfLoggedIn(user);
         header.signOut();
-        System.out.println("dupa");
-        //asdasd
     }
 }
